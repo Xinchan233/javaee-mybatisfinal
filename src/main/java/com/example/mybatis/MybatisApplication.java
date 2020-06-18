@@ -8,10 +8,9 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@MapperScan(value = "com.example.mybatis.dao")
-
-public class MybatisApplication extends SpringBootServletInitializer{
-
+@MapperScan(value = "com.example.mybatis.*")
+public class MybatisApplication{
+    //public class MybatisApplication extends SpringBootServletInitializer{
     public static void main(String[] args) {
         SpringApplication.run(MybatisApplication.class, args);
     }

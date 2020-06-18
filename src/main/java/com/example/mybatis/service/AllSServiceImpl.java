@@ -1,34 +1,34 @@
 package com.example.mybatis.service;
 
-import com.example.mybatis.dao.HomeworkDao;
-import com.example.mybatis.dao.StudentDao;
-import com.example.mybatis.dao.StudentHomeworkDao;
+import com.example.mybatis.dao.HomeworkMapper;
+import com.example.mybatis.dao.StudentMapper;
+import com.example.mybatis.dao.StudentHomeworkMapper;
 import com.example.mybatis.model.Student;
 import com.example.mybatis.model.StudentHomework;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@Transactional
+//@Transactional
 @Service
 public class AllSServiceImpl implements AllSService {
 
     @Resource
-    private final HomeworkDao homeworkDao;
-    private final StudentDao studentDao;
-    private final StudentHomeworkDao studentHomeworkDao;
+    private final HomeworkMapper homeworkMapper;
+    private final StudentMapper studentMapper;
+    private final StudentHomeworkMapper studentHomeworkMapper;
 
     @Autowired
-    public AllSServiceImpl(HomeworkDao homeworkDao,StudentDao studentDao, StudentHomeworkDao studentHomeworkDao) {
-        this.homeworkDao=homeworkDao;
-        this.studentDao = studentDao;
-        this.studentHomeworkDao = studentHomeworkDao;
+    public AllSServiceImpl(HomeworkMapper homeworkMapper, StudentMapper studentMapper, StudentHomeworkMapper studentHomeworkMapper) {
+        this.homeworkMapper = homeworkMapper;
+        this.studentMapper = studentMapper;
+        this.studentHomeworkMapper = studentHomeworkMapper;
     }
 
 
@@ -38,7 +38,7 @@ public class AllSServiceImpl implements AllSService {
         sId.setStudentId(Long.parseLong(req.getParameter("sId")));
         sId.setPW(req.getParameter("pw"));
 
-        List<Student> list=studentDao.find2(sId.getStudentId(),sId.getPW());
+        List<Student> list= studentMapper.find2(sId.getStudentId(),sId.getPW());
 
         if(null == list || list.size() <= 0){
             return false;
@@ -61,8 +61,7 @@ public class AllSServiceImpl implements AllSService {
         Calendar c = Calendar.getInstance();
         Date date = c.getTime();
         sh.setCreateTime(date);
-
-        return studentHomeworkDao.addHomework(sh);
+        return studentHomeworkMapper.addHomework(sh);
 
     }
 
@@ -77,8 +76,7 @@ public class AllSServiceImpl implements AllSService {
         Calendar c = Calendar.getInstance();
         Date date = c.getTime();
         sh.setCreateTime(date);
-
-        return studentHomeworkDao.updateHomework(sh);
+        return studentHomeworkMapper.updateHomework(sh);
 
     }
 
@@ -89,8 +87,7 @@ public class AllSServiceImpl implements AllSService {
         s.setStudentId(Long.parseLong(req.getParameter("sId")));
         s.setName(req.getParameter("name"));
         s.setPW(req.getParameter("pw"));
-
-        return studentDao.addstudent(s);
+       return studentMapper.addstudent(s);
 
     }
 

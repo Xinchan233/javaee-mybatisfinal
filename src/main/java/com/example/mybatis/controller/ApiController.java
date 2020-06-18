@@ -7,6 +7,8 @@ import com.example.mybatis.service.AllSServiceImpl;
 import com.example.mybatis.service.AllTServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
+@RequestMapping("app")
 @RestController
 public class ApiController {
     private final AllSServiceImpl allSService;
@@ -39,7 +41,9 @@ public class ApiController {
         System.out.println("slogin");
         // List<Student> list= allSService.login(req);
         boolean a=allSService.login(req);
+        System.out.println("slogin2");
         if(a==true){
+            System.out.println("slogin3");
             req.getRequestDispatcher("/student_choose.jsp").forward(req,resp);
         }
     }
@@ -79,14 +83,15 @@ public class ApiController {
             req.getRequestDispatcher("/teacher_choose.jsp").forward(req,resp);
         }else{
             //update1(req,resp);
+            req.getRequestDispatcher("/teacher_login.jsp").forward(req,resp);
         }
-        req.getRequestDispatcher("/teacher_login.jsp").forward(req,resp);
     }
 
     @RequestMapping("/submit_trans")
     public void submit_trans(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.getRequestDispatcher("/student_submithw.jsp").forward(req,resp);
     }
+
     @RequestMapping("/check_teacherhw")
     public void check_teacherhw(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         List<Homework> list2 = allTService.selectAll3();
@@ -101,14 +106,14 @@ public class ApiController {
 
     @RequestMapping("/check_allhw")
     public void check_allhw(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        List<Homework> list2 = allTService.selectAll3();
+        List<StudentHomework> list2 = allTService.selectAll1();
         if(null == list2 || list2.size() <= 0){
             req.setAttribute("flag",false);
         }else{
             req.setAttribute("flag",true);
             req.setAttribute("list2",list2);
         }
-        req.getRequestDispatcher("/hwlist.jsp").forward(req,resp);
+        req.getRequestDispatcher("/student_hwlist.jsp").forward(req,resp);
     }
     //作业提交执行
     @RequestMapping("/SubmitHomeworkServlet")
@@ -122,16 +127,9 @@ public class ApiController {
         }else{
             System.out.println("false");
         }
-
-        List<StudentHomework> list2 = allTService.selectAll1();
-        if(null == list2 || list2.size() <= 0){
-            req.setAttribute("flag",false);
-        }else{
-            req.setAttribute("flag",true);
-            req.setAttribute("list2",list2);
-        }
-        req.getRequestDispatcher("/student_hwlist.jsp").forward(req,resp);
+        req.getRequestDispatcher("/student_choose.jsp").forward(req,resp);
     }
+
 
     @RequestMapping("/updateHomeworkServlet")
     public void updateHomework(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -153,6 +151,29 @@ public class ApiController {
             req.setAttribute("list2",list2);
         }
         req.getRequestDispatcher("/student_hwlist.jsp").forward(req,resp);
+    }
+
+    @RequestMapping("/teacher_updatehw")
+    public void teacher_updatehw(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        req.setCharacterEncoding("utf-8");
+        boolean i = allTService.updatehomework(req);
+
+        if(i=true){
+            //完成数据库操作，返回响应给jsp
+            System.out.println("true");
+        }else{
+            System.out.println("false");
+        }
+
+        List<Homework> list2 = allTService.selectAll3();
+        if(null == list2 || list2.size() <= 0){
+            req.setAttribute("flag",false);
+        }else{
+            req.setAttribute("flag",true);
+            req.setAttribute("list2",list2);
+        }
+        req.getRequestDispatcher("/hwlist.jsp").forward(req,resp);
+
     }
 
     @RequestMapping("/TaddHomework")
@@ -180,6 +201,11 @@ public class ApiController {
     @RequestMapping("/addhw_trans")
     public void addhw_trans(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.getRequestDispatcher("/teacher_addhw.jsp").forward(req,resp);
+    }
+
+    @RequestMapping("/trans_update")
+    public void trans_update(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        req.getRequestDispatcher("/teacher_update.jsp").forward(req,resp);
     }
 
     @RequestMapping("/update_trans")

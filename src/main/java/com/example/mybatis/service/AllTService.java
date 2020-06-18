@@ -14,5 +14,6 @@ public interface AllTService {
     List<Homework> selectAll3();
     List<StudentHomework> selectAll1();
     boolean addteacher(HttpServletRequest req);
+    boolean updatehomework(HttpServletRequest req);
 
 }

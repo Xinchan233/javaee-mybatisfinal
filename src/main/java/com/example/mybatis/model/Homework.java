@@ -16,7 +16,7 @@ public class Homework {
     private String name;
     private String title;
     private String content;
-    private Date createTime;
+    private Date create_time;
     private Date updateTime;
 
     public Long getId() {
@@ -58,11 +58,11 @@ public class Homework {
     }
 
     public Date getCreateTime() {
-        return createTime;
+        return create_time;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreateTime(Date create_time) {
+        this.create_time = create_time;
     }
 
     public Date getUpdateTime() {
