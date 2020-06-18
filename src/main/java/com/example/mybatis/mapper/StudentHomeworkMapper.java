@@ -1,12 +1,10 @@
-package com.example.mybatis.dao;
+package com.example.mybatis.mapper;
 
 import com.example.mybatis.model.StudentHomework;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

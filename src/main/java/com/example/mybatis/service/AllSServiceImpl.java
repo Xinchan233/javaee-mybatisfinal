@@ -1,8 +1,8 @@
 package com.example.mybatis.service;
 
-import com.example.mybatis.dao.HomeworkMapper;
-import com.example.mybatis.dao.StudentMapper;
-import com.example.mybatis.dao.StudentHomeworkMapper;
+import com.example.mybatis.mapper.HomeworkMapper;
+import com.example.mybatis.mapper.StudentMapper;
+import com.example.mybatis.mapper.StudentHomeworkMapper;
 import com.example.mybatis.model.Student;
 import com.example.mybatis.model.StudentHomework;
 

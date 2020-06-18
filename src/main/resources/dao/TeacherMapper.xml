@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.mybatis.dao.TeacherMapper">
+<mapper namespace="com.example.mybatis.mapper.TeacherMapper">
 
     <select id="find4" resultType="com.example.mybatis.model.Teacher" >
         SELECT * FROM s_teacher WHERE id=#{id} AND pw=#{pw}

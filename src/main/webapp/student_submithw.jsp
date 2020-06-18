@@ -1,42 +1,39 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: apple
-  Date: 2020/6/10
-  Time: 23:10
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Title</title>
+    <style>
+        body{
+            font-size:40px;
+            background:url(/Img/2.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+        }
+    </style>
 </head>
 <body>
-
-<div align="center">
-    <h2>添加作业</h2>
+<div class="login" align="center">
+    <div style="color: white"><h5>student submit homework</h5></div>
     <form action="${pageContext.request.contextPath}/app/SubmitHomeworkServlet" method="post">
-        <table style="line-height: 40px">
-            <tr>
-                <th>学号:</th>
-                <td><input type="text" name="id" maxlength="30" size="50" required></td>
-            </tr>
-            <tr>
-                <th>作业id:</th>
-                <td><input type="text" name="hwid" maxlength="30" size="50" required></td>
-            </tr>
-            <tr>
-                <th>作业名称:</th>
-                <td><input type="text" name="hwname" maxlength="30" size="50" required></td>
-            </tr>
-            <tr>
-                <th>作业内容:</th>
-                <td><input type="text" name="content" maxlength="30" size="50" required></td>
-            </tr>
+        <div class="form">
+            <div class="item">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <input name="id" type=text placeholder="StudentID" >
+            </div>
+            <div class="item">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <input name="hwid" type=text placeholder="homeworkID" >
+            </div>
+            <div class="item">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <input name="hwname" type=text placeholder="homeworkName" >
+            </div>
+            <div class="item">
+                <i class="fa fa-key" aria-hidden="true"></i>
+                <input name="content" type=text placeholder="content" >
+            </div>
 
-            <tr align="center">
-                <td><input type="submit" name="submit" value="添加作业"> </td>
-            </tr>
-        </table>
+        </div>
+        <button type="submit" value="Login">submit</button>
     </form>
 </div>
 </body>

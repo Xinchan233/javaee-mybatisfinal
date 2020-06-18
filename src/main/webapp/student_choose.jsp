@@ -18,24 +18,32 @@
 <html>
 <head>
     <title>choose</title>
+    <style>
+        body{
+            font-size:40px;
+            background:url(/Img/2.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+        }
+    </style>
 </head>
 <body>
 
 <div align="center">
-    <h2>同学，请选择：</h2>
+    <div style="color: white"><h2>同学，请选择：</h2></div>
     <form action="${pageContext.request.contextPath}/app/submit_trans" method="post">
         <table style="line-height: 40px">
 
             <tr align="center">
-                <td><button type="submit" class="btn">提交作业</button></td>
+                <td><button style="font-size:20pt" type="submit" class="btn">提交作业</button></td>
             </tr>
         </table>
     </form>
     <form action="${pageContext.request.contextPath}/app/update_trans" method="post">
-        <table style="line-height: 40px">
+        <table style="line-height: 60px">
 
             <tr align="center">
-                <td><button type="submit" class="btn">修改作业</button></td>
+                <td><button style="font-size:20pt" type="submit" class="btn">修改作业</button></td>
             </tr>
         </table>
     </form>
@@ -43,7 +51,7 @@
         <table style="line-height: 40px">
 
             <tr align="center">
-                <td><button type="submit" class="btn">查看老师发布的作业</button></td>
+                <td><button style="font-size:20pt" type="submit" class="btn">查看老师发布的作业</button></td>
             </tr>
         </table>
     </form>
@@ -51,7 +59,7 @@
         <table style="line-height: 40px">
 
             <tr align="center">
-                <td><button type="submit" class="btn">查看所有学生作业</button></td>
+                <td><button style="font-size:20pt" type="submit" class="btn">查看所有学生作业</button></td>
             </tr>
         </table>
     </form>
@@ -60,5 +68,3 @@
 </body>
 </html>
 
-</body>
-</html>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.mybatis.dao.StudentMapper">
+<mapper namespace="com.example.mybatis.mapper.StudentMapper">
 
     <select id="find2" resultType="com.example.mybatis.model.Student" >
         SELECT * FROM s_student WHERE id=#{studentId} AND pw=#{pw}
